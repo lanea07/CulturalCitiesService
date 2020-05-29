@@ -1,0 +1,1230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbCultCitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblArtist">
+          <Key>
+            <PropertyRef Name="artist_id" />
+          </Key>
+          <Property Name="artist_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stage_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="country_of_origin" Type="int" Nullable="false" />
+          <Property Name="legal_representative" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="website" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="bussines_contact_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="official_mail_account" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblArtistEvent">
+          <Key>
+            <PropertyRef Name="event_id" />
+            <PropertyRef Name="artist_id" />
+          </Key>
+          <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="artist_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="geographical_location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCulturalJobTasks">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="scanned_sites" Type="int" Nullable="false" />
+          <Property Name="events_found" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personal_identification" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="birth_date" Type="date" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerEvent">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="suscribed_to_alerts" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerPreferences">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="preference_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="preference_id" Type="int" Nullable="false" />
+          <Property Name="preference_value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEvent">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="geographical_location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="event_date" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="event_source_site_page" Type="text" Nullable="false" />
+          <Property Name="culturaljob_task_id" Type="int" Nullable="false" />
+          <Property Name="tags" Type="text" Nullable="false" />
+          <Property Name="requested_by_artist" Type="bit" Nullable="false" />
+          <Property Name="EventImagePath" Type="varchar" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEventComment">
+          <Key>
+            <PropertyRef Name="comment_id" />
+          </Key>
+          <Property Name="comment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="message_content" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="in_reply_to_comment" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEventGenre">
+          <Key>
+            <PropertyRef Name="event_id" />
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="genre_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGenre">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreferenceValue">
+          <Key>
+            <PropertyRef Name="preference_id" />
+          </Key>
+          <Property Name="preference_id" Type="int" Nullable="false" />
+          <Property Name="preference_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPublicity">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_by" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_by" Type="int" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="start_period" Type="datetime" Nullable="false" />
+          <Property Name="end_period" Type="datetime" Nullable="false" />
+          <Property Name="cant_of_follows" Type="int" Nullable="false" />
+          <Property Name="related_event" Type="int" Nullable="false" />
+          <Property Name="requested_by_artist" Type="bit" Nullable="false" />
+          <Property Name="artist_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblArtistEvent_tblArtist">
+          <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="1" />
+          <End Role="tblArtistEvent" Type="Self.tblArtistEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArtist">
+              <PropertyRef Name="artist_id" />
+            </Principal>
+            <Dependent Role="tblArtistEvent">
+              <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblArtistEvent_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblArtistEvent" Type="Self.tblArtistEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblArtistEvent">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCity_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="tblCity">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomer_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="tblCustomer">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerEvent_tblCustomer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblCustomerEvent" Type="Self.tblCustomerEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tblCustomerEvent">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerEvent_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblCustomerEvent" Type="Self.tblCustomerEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblCustomerEvent">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerPreferences_tblCustomer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblCustomerPreferences" Type="Self.tblCustomerPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tblCustomerPreferences">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerPreferences_tblPreferenceValue">
+          <End Role="tblPreferenceValue" Type="Self.tblPreferenceValue" Multiplicity="1" />
+          <End Role="tblCustomerPreferences" Type="Self.tblCustomerPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPreferenceValue">
+              <PropertyRef Name="preference_id" />
+            </Principal>
+            <Dependent Role="tblCustomerPreferences">
+              <PropertyRef Name="preference_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvent_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvent_tblCulturalJobTasks">
+          <End Role="tblCulturalJobTasks" Type="Self.tblCulturalJobTasks" Multiplicity="1" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCulturalJobTasks">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="culturaljob_task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvent_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="create_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventComment_tblCustomer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblEventComment" Type="Self.tblEventComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tblEventComment">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventComment_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblEventComment" Type="Self.tblEventComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblEventComment">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventComment_tblEventComment">
+          <End Role="tblEventComment" Type="Self.tblEventComment" Multiplicity="1" />
+          <End Role="tblEventComment1" Type="Self.tblEventComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEventComment">
+              <PropertyRef Name="comment_id" />
+            </Principal>
+            <Dependent Role="tblEventComment1">
+              <PropertyRef Name="in_reply_to_comment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventGenre_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblEventGenre" Type="Self.tblEventGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblEventGenre">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventGenre_tblGenre">
+          <End Role="tblGenre" Type="Self.tblGenre" Multiplicity="1" />
+          <End Role="tblEventGenre" Type="Self.tblEventGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="tblEventGenre">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPublicity_tblArtist">
+          <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="0..1" />
+          <End Role="tblPublicity" Type="Self.tblPublicity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArtist">
+              <PropertyRef Name="artist_id" />
+            </Principal>
+            <Dependent Role="tblPublicity">
+              <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPublicity_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblPublicity" Type="Self.tblPublicity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblPublicity">
+              <PropertyRef Name="related_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblUserRole">
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRole">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbCultCitiesModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArtist" EntityType="Self.tblArtist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArtistEvent" EntityType="Self.tblArtistEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCountry" EntityType="Self.tblCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCulturalJobTasks" EntityType="Self.tblCulturalJobTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerEvent" EntityType="Self.tblCustomerEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerPreferences" EntityType="Self.tblCustomerPreferences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEvent" EntityType="Self.tblEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventComment" EntityType="Self.tblEventComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventGenre" EntityType="Self.tblEventGenre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGenre" EntityType="Self.tblGenre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPreferenceValue" EntityType="Self.tblPreferenceValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPublicity" EntityType="Self.tblPublicity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblArtistEvent_tblArtist" Association="Self.FK_tblArtistEvent_tblArtist">
+            <End Role="tblArtist" EntitySet="tblArtist" />
+            <End Role="tblArtistEvent" EntitySet="tblArtistEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblArtistEvent_tblEvent" Association="Self.FK_tblArtistEvent_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblArtistEvent" EntitySet="tblArtistEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCity_tblCountry" Association="Self.FK_tblCity_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountry" />
+            <End Role="tblCity" EntitySet="tblCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomer_tblCity" Association="Self.FK_tblCustomer_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerEvent_tblCustomer" Association="Self.FK_tblCustomerEvent_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblCustomerEvent" EntitySet="tblCustomerEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerEvent_tblEvent" Association="Self.FK_tblCustomerEvent_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblCustomerEvent" EntitySet="tblCustomerEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerPreferences_tblCustomer" Association="Self.FK_tblCustomerPreferences_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblCustomerPreferences" EntitySet="tblCustomerPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerPreferences_tblPreferenceValue" Association="Self.FK_tblCustomerPreferences_tblPreferenceValue">
+            <End Role="tblPreferenceValue" EntitySet="tblPreferenceValue" />
+            <End Role="tblCustomerPreferences" EntitySet="tblCustomerPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvent_tblCity" Association="Self.FK_tblEvent_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvent_tblCulturalJobTasks" Association="Self.FK_tblEvent_tblCulturalJobTasks">
+            <End Role="tblCulturalJobTasks" EntitySet="tblCulturalJobTasks" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvent_tblUser" Association="Self.FK_tblEvent_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventComment_tblCustomer" Association="Self.FK_tblEventComment_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblEventComment" EntitySet="tblEventComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventComment_tblEvent" Association="Self.FK_tblEventComment_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblEventComment" EntitySet="tblEventComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventComment_tblEventComment" Association="Self.FK_tblEventComment_tblEventComment">
+            <End Role="tblEventComment" EntitySet="tblEventComment" />
+            <End Role="tblEventComment1" EntitySet="tblEventComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventGenre_tblEvent" Association="Self.FK_tblEventGenre_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblEventGenre" EntitySet="tblEventGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventGenre_tblGenre" Association="Self.FK_tblEventGenre_tblGenre">
+            <End Role="tblGenre" EntitySet="tblGenre" />
+            <End Role="tblEventGenre" EntitySet="tblEventGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPublicity_tblArtist" Association="Self.FK_tblPublicity_tblArtist">
+            <End Role="tblArtist" EntitySet="tblArtist" />
+            <End Role="tblPublicity" EntitySet="tblPublicity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPublicity_tblEvent" Association="Self.FK_tblPublicity_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblPublicity" EntitySet="tblPublicity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblUserRole" Association="Self.FK_tblUser_tblUserRole">
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbCultCitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblArtist">
+          <Key>
+            <PropertyRef Name="artist_id" />
+          </Key>
+          <Property Name="artist_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stage_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country_of_origin" Type="Int32" Nullable="false" />
+          <Property Name="legal_representative" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="website" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bussines_contact_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="official_mail_account" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblPublicity" Relationship="Self.FK_tblPublicity_tblArtist" FromRole="tblArtist" ToRole="tblPublicity" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.tblArtistEvent" FromRole="tblArtist" ToRole="tblEvent" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="geographical_location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCountry" Relationship="Self.FK_tblCity_tblCountry" FromRole="tblCity" ToRole="tblCountry" />
+          <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblCustomer_tblCity" FromRole="tblCity" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.FK_tblEvent_tblCity" FromRole="tblCity" ToRole="tblEvent" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK_tblCity_tblCountry" FromRole="tblCountry" ToRole="tblCity" />
+        </EntityType>
+        <EntityType Name="tblCulturalJobTasks">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="scanned_sites" Type="Int32" Nullable="false" />
+          <Property Name="events_found" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.FK_tblEvent_tblCulturalJobTasks" FromRole="tblCulturalJobTasks" ToRole="tblEvent" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personal_identification" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK_tblCustomer_tblCity" FromRole="tblCustomer" ToRole="tblCity" />
+          <NavigationProperty Name="tblCustomerEvent" Relationship="Self.FK_tblCustomerEvent_tblCustomer" FromRole="tblCustomer" ToRole="tblCustomerEvent" />
+          <NavigationProperty Name="tblCustomerPreferences" Relationship="Self.FK_tblCustomerPreferences_tblCustomer" FromRole="tblCustomer" ToRole="tblCustomerPreferences" />
+          <NavigationProperty Name="tblEventComment" Relationship="Self.FK_tblEventComment_tblCustomer" FromRole="tblCustomer" ToRole="tblEventComment" />
+        </EntityType>
+        <EntityType Name="tblCustomerEvent">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="event_id" Type="Int32" Nullable="false" />
+          <Property Name="suscribed_to_alerts" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblCustomerEvent_tblCustomer" FromRole="tblCustomerEvent" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.FK_tblCustomerEvent_tblEvent" FromRole="tblCustomerEvent" ToRole="tblEvent" />
+        </EntityType>
+        <EntityType Name="tblCustomerPreferences">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="preference_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="preference_id" Type="Int32" Nullable="false" />
+          <Property Name="preference_value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblCustomerPreferences_tblCustomer" FromRole="tblCustomerPreferences" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblPreferenceValue" Relationship="Self.FK_tblCustomerPreferences_tblPreferenceValue" FromRole="tblCustomerPreferences" ToRole="tblPreferenceValue" />
+        </EntityType>
+        <EntityType Name="tblEvent">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="geographical_location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="event_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="event_source_site_page" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="culturaljob_task_id" Type="Int32" Nullable="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="requested_by_artist" Type="Boolean" Nullable="false" />
+          <Property Name="EventImagePath" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK_tblEvent_tblCity" FromRole="tblEvent" ToRole="tblCity" />
+          <NavigationProperty Name="tblCulturalJobTasks" Relationship="Self.FK_tblEvent_tblCulturalJobTasks" FromRole="tblEvent" ToRole="tblCulturalJobTasks" />
+          <NavigationProperty Name="tblCustomerEvent" Relationship="Self.FK_tblCustomerEvent_tblEvent" FromRole="tblEvent" ToRole="tblCustomerEvent" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblEvent_tblUser" FromRole="tblEvent" ToRole="tblUser" />
+          <NavigationProperty Name="tblEventComment" Relationship="Self.FK_tblEventComment_tblEvent" FromRole="tblEvent" ToRole="tblEventComment" />
+          <NavigationProperty Name="tblPublicity" Relationship="Self.FK_tblPublicity_tblEvent" FromRole="tblEvent" ToRole="tblPublicity" />
+          <NavigationProperty Name="tblArtist" Relationship="Self.tblArtistEvent" FromRole="tblEvent" ToRole="tblArtist" />
+          <NavigationProperty Name="tblGenre" Relationship="Self.tblEventGenre" FromRole="tblEvent" ToRole="tblGenre" />
+        </EntityType>
+        <EntityType Name="tblEventComment">
+          <Key>
+            <PropertyRef Name="comment_id" />
+          </Key>
+          <Property Name="comment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="message_content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="in_reply_to_comment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCustomer" Relationship="Self.FK_tblEventComment_tblCustomer" FromRole="tblEventComment" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.FK_tblEventComment_tblEvent" FromRole="tblEventComment" ToRole="tblEvent" />
+          <NavigationProperty Name="tblEventComment1" Relationship="Self.FK_tblEventComment_tblEventComment" FromRole="tblEventComment" ToRole="tblEventComment1" />
+          <NavigationProperty Name="tblEventComment2" Relationship="Self.FK_tblEventComment_tblEventComment" FromRole="tblEventComment1" ToRole="tblEventComment" />
+        </EntityType>
+        <EntityType Name="tblGenre">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.tblEventGenre" FromRole="tblGenre" ToRole="tblEvent" />
+        </EntityType>
+        <EntityType Name="tblPreferenceValue">
+          <Key>
+            <PropertyRef Name="preference_id" />
+          </Key>
+          <Property Name="preference_id" Type="Int32" Nullable="false" />
+          <Property Name="preference_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCustomerPreferences" Relationship="Self.FK_tblCustomerPreferences_tblPreferenceValue" FromRole="tblPreferenceValue" ToRole="tblCustomerPreferences" />
+        </EntityType>
+        <EntityType Name="tblPublicity">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_by" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_by" Type="Int32" Nullable="false" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="start_period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cant_of_follows" Type="Int32" Nullable="false" />
+          <Property Name="related_event" Type="Int32" Nullable="false" />
+          <Property Name="requested_by_artist" Type="Boolean" Nullable="false" />
+          <Property Name="artist_id" Type="Int32" />
+          <NavigationProperty Name="tblArtist" Relationship="Self.FK_tblPublicity_tblArtist" FromRole="tblPublicity" ToRole="tblArtist" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.FK_tblPublicity_tblEvent" FromRole="tblPublicity" ToRole="tblEvent" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEvent" Relationship="Self.FK_tblEvent_tblUser" FromRole="tblUser" ToRole="tblEvent" />
+          <NavigationProperty Name="tblUserRole" Relationship="Self.FK_tblUser_tblUserRole" FromRole="tblUser" ToRole="tblUserRole" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUser_tblUserRole" FromRole="tblUserRole" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblPublicity_tblArtist">
+          <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="0..1" />
+          <End Role="tblPublicity" Type="Self.tblPublicity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArtist">
+              <PropertyRef Name="artist_id" />
+            </Principal>
+            <Dependent Role="tblPublicity">
+              <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCity_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="1" />
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="tblCity">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomer_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="tblCustomer">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvent_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="1" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvent_tblCulturalJobTasks">
+          <End Role="tblCulturalJobTasks" Type="Self.tblCulturalJobTasks" Multiplicity="1" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCulturalJobTasks">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="culturaljob_task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerEvent_tblCustomer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblCustomerEvent" Type="Self.tblCustomerEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tblCustomerEvent">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerPreferences_tblCustomer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblCustomerPreferences" Type="Self.tblCustomerPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tblCustomerPreferences">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventComment_tblCustomer">
+          <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+          <End Role="tblEventComment" Type="Self.tblEventComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="tblEventComment">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerEvent_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblCustomerEvent" Type="Self.tblCustomerEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblCustomerEvent">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCustomerPreferences_tblPreferenceValue">
+          <End Role="tblPreferenceValue" Type="Self.tblPreferenceValue" Multiplicity="1" />
+          <End Role="tblCustomerPreferences" Type="Self.tblCustomerPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPreferenceValue">
+              <PropertyRef Name="preference_id" />
+            </Principal>
+            <Dependent Role="tblCustomerPreferences">
+              <PropertyRef Name="preference_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvent_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="create_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventComment_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblEventComment" Type="Self.tblEventComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblEventComment">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPublicity_tblEvent">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="1" />
+          <End Role="tblPublicity" Type="Self.tblPublicity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="tblPublicity">
+              <PropertyRef Name="related_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventComment_tblEventComment">
+          <End Role="tblEventComment" Type="Self.tblEventComment" Multiplicity="1" />
+          <End Role="tblEventComment1" Type="Self.tblEventComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEventComment">
+              <PropertyRef Name="comment_id" />
+            </Principal>
+            <Dependent Role="tblEventComment1">
+              <PropertyRef Name="in_reply_to_comment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblUserRole">
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRole">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblArtistEvent">
+          <End Role="tblArtist" Type="Self.tblArtist" Multiplicity="*" />
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+        </Association>
+        <Association Name="tblEventGenre">
+          <End Role="tblEvent" Type="Self.tblEvent" Multiplicity="*" />
+          <End Role="tblGenre" Type="Self.tblGenre" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="dbCultCitiesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblArtist" EntityType="Self.tblArtist" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" />
+          <EntitySet Name="tblCountry" EntityType="Self.tblCountry" />
+          <EntitySet Name="tblCulturalJobTasks" EntityType="Self.tblCulturalJobTasks" />
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" />
+          <EntitySet Name="tblCustomerEvent" EntityType="Self.tblCustomerEvent" />
+          <EntitySet Name="tblCustomerPreferences" EntityType="Self.tblCustomerPreferences" />
+          <EntitySet Name="tblEvent" EntityType="Self.tblEvent" />
+          <EntitySet Name="tblEventComment" EntityType="Self.tblEventComment" />
+          <EntitySet Name="tblGenre" EntityType="Self.tblGenre" />
+          <EntitySet Name="tblPreferenceValue" EntityType="Self.tblPreferenceValue" />
+          <EntitySet Name="tblPublicity" EntityType="Self.tblPublicity" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" />
+          <AssociationSet Name="FK_tblPublicity_tblArtist" Association="Self.FK_tblPublicity_tblArtist">
+            <End Role="tblArtist" EntitySet="tblArtist" />
+            <End Role="tblPublicity" EntitySet="tblPublicity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCity_tblCountry" Association="Self.FK_tblCity_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountry" />
+            <End Role="tblCity" EntitySet="tblCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomer_tblCity" Association="Self.FK_tblCustomer_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvent_tblCity" Association="Self.FK_tblEvent_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvent_tblCulturalJobTasks" Association="Self.FK_tblEvent_tblCulturalJobTasks">
+            <End Role="tblCulturalJobTasks" EntitySet="tblCulturalJobTasks" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerEvent_tblCustomer" Association="Self.FK_tblCustomerEvent_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblCustomerEvent" EntitySet="tblCustomerEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerPreferences_tblCustomer" Association="Self.FK_tblCustomerPreferences_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblCustomerPreferences" EntitySet="tblCustomerPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventComment_tblCustomer" Association="Self.FK_tblEventComment_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblEventComment" EntitySet="tblEventComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerEvent_tblEvent" Association="Self.FK_tblCustomerEvent_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblCustomerEvent" EntitySet="tblCustomerEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCustomerPreferences_tblPreferenceValue" Association="Self.FK_tblCustomerPreferences_tblPreferenceValue">
+            <End Role="tblPreferenceValue" EntitySet="tblPreferenceValue" />
+            <End Role="tblCustomerPreferences" EntitySet="tblCustomerPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvent_tblUser" Association="Self.FK_tblEvent_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventComment_tblEvent" Association="Self.FK_tblEventComment_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblEventComment" EntitySet="tblEventComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPublicity_tblEvent" Association="Self.FK_tblPublicity_tblEvent">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblPublicity" EntitySet="tblPublicity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventComment_tblEventComment" Association="Self.FK_tblEventComment_tblEventComment">
+            <End Role="tblEventComment" EntitySet="tblEventComment" />
+            <End Role="tblEventComment1" EntitySet="tblEventComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblUserRole" Association="Self.FK_tblUser_tblUserRole">
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="tblArtistEvent" Association="Self.tblArtistEvent">
+            <End Role="tblArtist" EntitySet="tblArtist" />
+            <End Role="tblEvent" EntitySet="tblEvent" />
+          </AssociationSet>
+          <AssociationSet Name="tblEventGenre" Association="Self.tblEventGenre">
+            <End Role="tblEvent" EntitySet="tblEvent" />
+            <End Role="tblGenre" EntitySet="tblGenre" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbCultCitiesModelStoreContainer" CdmEntityContainer="dbCultCitiesEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblArtist">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblArtist">
+              <MappingFragment StoreEntitySet="tblArtist">
+                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
+                <ScalarProperty Name="stage_name" ColumnName="stage_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="country_of_origin" ColumnName="country_of_origin" />
+                <ScalarProperty Name="legal_representative" ColumnName="legal_representative" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="bussines_contact_number" ColumnName="bussines_contact_number" />
+                <ScalarProperty Name="official_mail_account" ColumnName="official_mail_account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCity">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="geographical_location" ColumnName="geographical_location" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCountry">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblCountry">
+              <MappingFragment StoreEntitySet="tblCountry">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCulturalJobTasks">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblCulturalJobTasks">
+              <MappingFragment StoreEntitySet="tblCulturalJobTasks">
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="scanned_sites" ColumnName="scanned_sites" />
+                <ScalarProperty Name="events_found" ColumnName="events_found" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomer">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="personal_identification" ColumnName="personal_identification" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerEvent">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblCustomerEvent">
+              <MappingFragment StoreEntitySet="tblCustomerEvent">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="suscribed_to_alerts" ColumnName="suscribed_to_alerts" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerPreferences">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblCustomerPreferences">
+              <MappingFragment StoreEntitySet="tblCustomerPreferences">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="preference_id" ColumnName="preference_id" />
+                <ScalarProperty Name="preference_value" ColumnName="preference_value" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEvent">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblEvent">
+              <MappingFragment StoreEntitySet="tblEvent">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="geographical_location" ColumnName="geographical_location" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="event_date" ColumnName="event_date" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="event_source_site_page" ColumnName="event_source_site_page" />
+                <ScalarProperty Name="culturaljob_task_id" ColumnName="culturaljob_task_id" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="requested_by_artist" ColumnName="requested_by_artist" />
+                <ScalarProperty Name="EventImagePath" ColumnName="EventImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEventComment">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblEventComment">
+              <MappingFragment StoreEntitySet="tblEventComment">
+                <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="message_content" ColumnName="message_content" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="in_reply_to_comment" ColumnName="in_reply_to_comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGenre">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblGenre">
+              <MappingFragment StoreEntitySet="tblGenre">
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreferenceValue">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblPreferenceValue">
+              <MappingFragment StoreEntitySet="tblPreferenceValue">
+                <ScalarProperty Name="preference_id" ColumnName="preference_id" />
+                <ScalarProperty Name="preference_name" ColumnName="preference_name" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPublicity">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblPublicity">
+              <MappingFragment StoreEntitySet="tblPublicity">
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="ad_title" ColumnName="ad_title" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="start_period" ColumnName="start_period" />
+                <ScalarProperty Name="end_period" ColumnName="end_period" />
+                <ScalarProperty Name="cant_of_follows" ColumnName="cant_of_follows" />
+                <ScalarProperty Name="related_event" ColumnName="related_event" />
+                <ScalarProperty Name="requested_by_artist" ColumnName="requested_by_artist" />
+                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRole">
+            <EntityTypeMapping TypeName="dbCultCitiesModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tblArtistEvent" TypeName="dbCultCitiesModel.tblArtistEvent" StoreEntitySet="tblArtistEvent">
+            <EndProperty Name="tblArtist">
+              <ScalarProperty Name="artist_id" ColumnName="artist_id" />
+            </EndProperty>
+            <EndProperty Name="tblEvent">
+              <ScalarProperty Name="event_id" ColumnName="event_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tblEventGenre" TypeName="dbCultCitiesModel.tblEventGenre" StoreEntitySet="tblEventGenre">
+            <EndProperty Name="tblEvent">
+              <ScalarProperty Name="event_id" ColumnName="event_id" />
+            </EndProperty>
+            <EndProperty Name="tblGenre">
+              <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
