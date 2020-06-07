@@ -22,8 +22,8 @@ namespace CulturalCitiesService
             );*/
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<tblArtist>("tblArtists");
-            builder.EntitySet<tblCity>("tblCity");
-            builder.EntitySet<tblCountry>("tblCountry");
+            builder.EntitySet<tblCity>("tblCities");
+            builder.EntitySet<tblCountry>("tblCountries");
             builder.EntitySet<tblCulturalJobTasks>("tblCulturalJobTasks");
             builder.EntitySet<tblCustomer>("tblCustomers");
             builder.EntitySet<tblCustomerEvent>("tblCustomerEvent");
@@ -31,11 +31,10 @@ namespace CulturalCitiesService
             builder.EntitySet<tblEvent>("tblEvent");
             builder.EntitySet<tblEventComment>("tblEventComment");
             builder.EntitySet<tblGenre>("tblGenre");
-            builder.EntitySet<tblPreferenceValue>("tblPreferenceValue");
+            builder.EntitySet<tblPreferenceValue>("tblPreferenceValues");
             builder.EntitySet<tblPublicity>("tblPublicity");
             builder.EntitySet<tblUser>("tblUser");
             builder.EntitySet<tblUserRole>("tblUserRole");
-            builder.Entity<tblCustomer>().Collection.Action("Login");
             config.Routes.MapODataRoute("webservice", "webservice", builder.GetEdmModel());
 
         }

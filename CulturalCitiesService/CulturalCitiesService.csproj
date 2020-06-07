@@ -144,7 +144,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\tblCitiesController.cs" />
+    <Compile Include="Controllers\tblCountriesController.cs" />
+    <Compile Include="Controllers\tblCustomerPreferencesController.cs" />
     <Compile Include="Controllers\tblCustomersController.cs" />
+    <Compile Include="Controllers\tblPreferenceValuesController.cs" />
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

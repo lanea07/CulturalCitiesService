@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
@@ -36,6 +37,7 @@ namespace CulturalCitiesService.Controllers
         private DataModel db = new DataModel();
 
         // GET: odata/tblCustomers
+        //USED FOR LOGIN
         [EnableQuery]
         public IQueryable<tblCustomer> GettblCustomers()
         {
@@ -99,24 +101,6 @@ namespace CulturalCitiesService.Controllers
 
             return Created(tblCustomer);
         }
-
-
-        //LOGIN VIA POST
-        [HttpPost]
-        public async Task<IHttpActionResult> Login(HttpRequestMessage request)
-        {
-            auxCustomerLoginClass body = JsonConvert.DeserializeObject<auxCustomerLoginClass>(request.Content.ReadAsStringAsync().Result);
-            var customer = db.tblCustomer.Where(x => x.username == body.username && x.password == body.password).FirstOrDefault();
-            if (customer != null)
-            {
-                return Ok();
-            } 
-            else
-            {
-                return NotFound();
-            }
-        }
-
 
         // PATCH: odata/tblCustomers(5)
         [AcceptVerbs("PATCH", "MERGE")]
