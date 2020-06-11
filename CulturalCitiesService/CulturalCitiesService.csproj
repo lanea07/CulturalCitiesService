@@ -149,6 +149,7 @@
     <Compile Include="Controllers\tblCustomerPreferencesController.cs" />
     <Compile Include="Controllers\tblCustomersController.cs" />
     <Compile Include="Controllers\tblEventsController.cs" />
+    <Compile Include="Controllers\tblGenresController.cs" />
     <Compile Include="Controllers\tblPreferenceValuesController.cs" />
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Global.asax.cs">

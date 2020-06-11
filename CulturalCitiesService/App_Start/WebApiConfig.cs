@@ -30,7 +30,7 @@ namespace CulturalCitiesService
             builder.EntitySet<tblCustomerPreferences>("tblCustomerPreferences");
             builder.EntitySet<tblEvent>("tblEvents");
             builder.EntitySet<tblEventComment>("tblEventComment");
-            builder.EntitySet<tblGenre>("tblGenre");
+            builder.EntitySet<tblGenre>("tblGenres");
             builder.EntitySet<tblPreferenceValue>("tblPreferenceValues");
             builder.EntitySet<tblPublicity>("tblPublicity");
             builder.EntitySet<tblUser>("tblUser");
