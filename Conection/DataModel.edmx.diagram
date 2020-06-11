@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e0b775a06b0c4e7ca64c4b90f5f0b18c" Name="Diagram1">
+        <EntityTypeShape EntityType="dbCultCitiesModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblArtist" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblCity" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblCountry" Width="1.5" PointX="1.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblCulturalJobTasks" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblCustomer" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblCustomerEvent" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblCustomerPreferences" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblEvent" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblEventComment" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblGenre" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblPreferenceValue" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblPublicity" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblUser" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCultCitiesModel.tblUserRole" Width="1.5" PointX="1.5" PointY="20.125" IsExpanded="true" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblPublicity_tblArtist" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblCity_tblCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblCustomer_tblCity" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblEvent_tblCity" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblEvent_tblCulturalJobTasks" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblCustomerEvent_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblCustomerPreferences_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblEventComment_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblCustomerEvent_tblEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblCustomerPreferences_tblPreferenceValue" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblEvent_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblEventComment_tblEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblPublicity_tblEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblEventComment_tblEventComment" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.FK_tblUser_tblUserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.tblArtistEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="dbCultCitiesModel.tblEventGenre" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
